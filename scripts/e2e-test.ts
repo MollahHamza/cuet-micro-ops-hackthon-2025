@@ -59,7 +59,7 @@ async function waitForServer(): Promise<void> {
 }
 
 async function testRoot(): Promise<void> {
-  logSection("Root Endpoint")    ;
+  logSection("Root Endpoint");
 
   const response = await fetch(`${BASE_URL}/`);
   const data = (await response.json()) as { message?: string };
