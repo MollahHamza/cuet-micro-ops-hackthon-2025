@@ -33,7 +33,9 @@
   "devDependencies": {
     "@hono/eslint-config": "^2.0.3",
     "@types/node": "^24.10.2",
+    "cross-env": "^10.1.0",
     "prettier": "^3.7.4",
+    "tsx": "^4.21.0",
     "typescript": "^5.8.3"
   }
 }
