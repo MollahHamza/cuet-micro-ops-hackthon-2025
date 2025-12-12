@@ -64,7 +64,7 @@ async function testRoot(): Promise<void> {
   const response = await fetch(`${BASE_URL}/`);
   const data = (await response.json()) as { message?: string };
 
-  if (data.message === "Hello Hono! ") {
+  if (data.message === "Hello Hono!") {
     logPass("Root returns welcome message");
   } else {
     logFail(
