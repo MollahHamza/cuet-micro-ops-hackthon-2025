@@ -1,3 +1,4 @@
+<img width="2816" height="1536" alt="Archi" src="https://github.com/user-attachments/assets/ea0f2dba-8d4f-4bd0-b6b2-b6395909e55e" />
 
 
 ## Overview
@@ -291,3 +292,4 @@ If the status query returns `status="failed"`:
 ## Summary
 
 By using a Redis-backed polling architecture with background workers and presigned MinIO URLs, this design decouples long-running download processing from client HTTP connections, avoids Cloudflare timeouts, and provides authenticated users with clear progress and retry capabilities. All heavy work runs asynchronously in the worker layer, while the React + React Query frontend interacts with the API through short, predictable requests for initiation, status, and final download.
+
