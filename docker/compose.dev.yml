@@ -45,7 +45,6 @@ services:
       - "9001:9001" # Web console
     volumes:
       - delineate-minio-data:/data
-  
 
 volumes:
   delineate-minio-data:

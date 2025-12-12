@@ -12,25 +12,25 @@ function App() {
 
   useEffect(() => {
     fetch(`${backendUrl}/health`)
-      .then(res => res.json())
-      .then(data => setHealth(data))
-      .catch(err => console.error("Health fetch error:", err));
+      .then((res) => res.json())
+      .then((data) => setHealth(data))
+      .catch((err) => console.error("Health fetch error:", err));
 
     fetch(`${backendUrl}/v1/download/errors`)
-      .then(res => res.json())
-      .then(data => setErrors(data))
-      .catch(err => console.error("Error fetch error:", err));
+      .then((res) => res.json())
+      .then((data) => setErrors(data))
+      .catch((err) => console.error("Error fetch error:", err));
 
     fetch(`${backendUrl}/v1/download/metrics`)
-      .then(res => res.json())
-      .then(data => setMetrics(data))
-      .catch(err => console.error("Metrics fetch error:", err));
+      .then((res) => res.json())
+      .then((data) => setMetrics(data))
+      .catch((err) => console.error("Metrics fetch error:", err));
 
     const interval = setInterval(() => {
       fetch(`${backendUrl}/v1/download/status/all`)
-        .then(res => res.json())
-        .then(data => setJobs(data))
-        .catch(err => console.error("Jobs fetch error:", err));
+        .then((res) => res.json())
+        .then((data) => setJobs(data))
+        .catch((err) => console.error("Jobs fetch error:", err));
     }, 5000);
 
     return () => clearInterval(interval);
@@ -48,7 +48,7 @@ function App() {
       <div className="card">
         <h2>Download Jobs</h2>
         <ul>
-          {jobs.map(job => (
+          {jobs.map((job) => (
             <li key={job.id}>
               {job.id} - {job.status} - {job.progress || 0}%
             </li>
@@ -74,7 +74,11 @@ function App() {
 
       <div className="card">
         <h2>Trace Viewer</h2>
-        <a href="http://delineate-jaeger:16686" target="_blank" rel="noreferrer">
+        <a
+          href="http://delineate-jaeger:16686"
+          target="_blank"
+          rel="noreferrer"
+        >
           Open Jaeger UI
         </a>
       </div>

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import * as Sentry from '@sentry/react';
+import React, { useState, useEffect } from "react";
+import * as Sentry from "@sentry/react";
 
 // Mock API calls
 const fetchHealth = async () => {
@@ -64,7 +64,9 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gray-50 p-6 font-sans">
       <header className="mb-8">
-        <h1 className="text-3xl font-bold text-gray-800">Observability Dashboard</h1>
+        <h1 className="text-3xl font-bold text-gray-800">
+          Observability Dashboard
+        </h1>
         <p className="text-gray-600 mt-1">
           Monitor service health, downloads, and errors in real-time
         </p>
@@ -72,11 +74,13 @@ export default function App() {
 
       {/* Health Status */}
       <section className="mb-8">
-        <h2 className="text-xl font-semibold text-gray-700 mb-2">Health Status</h2>
+        <h2 className="text-xl font-semibold text-gray-700 mb-2">
+          Health Status
+        </h2>
         <div className="flex items-center space-x-4 bg-white p-4 rounded shadow">
           <span
             className={`px-3 py-1 rounded-full font-semibold ${statusColor(
-              health.status
+              health.status,
             )}`}
           >
             {health.status.toUpperCase()}
@@ -113,7 +117,7 @@ export default function App() {
                   <td className="px-6 py-4 whitespace-nowrap">
                     <span
                       className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${downloadColor(
-                        d.status
+                        d.status,
                       )}`}
                     >
                       {d.status.replace("_", " ").toUpperCase()}
