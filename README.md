@@ -280,6 +280,17 @@ Your pipeline must include these stages:
      - Instructions for contributors
      - How to run tests locally before pushing
 
+      ## CI/CD
+
+      [![CI](https://github.com/MollahHamza/cuet-micro-ops-hackthon-2025/actions/workflows/ci.yml/badge.svg)](https://github.com/MollahHamza/cuet-micro-ops-hackthon-2025/actions/workflows/ci.yml)
+
+      This project uses a GitHub Actions based CI/CD pipeline to continuously validate and package the service. The workflow is defined in `.github/workflows/ci.yml` and is triggered on every push and every pull request targeting the `main` or `master` branches.[file:123] At a high level, the pipeline enforces code quality and consistency, runs automated tests against the API, and builds a production-grade Docker image from `docker/Dockerfile.prod`, ensuring that changes are always in a deployable state.
+
+      From a DevOps perspective, the pipeline is structured into three primary stages: **Lint**, **Test (E2E)**, and **Build (Docker)**.[file:123] In the Lint stage, the workflow installs dependencies in a clean environment using `npm ci` and then runs `npm run lint` followed by `npm run format:check` to enforce ESLint and Prettier rules across the codebase.[file:123] The Test stage depends on Lint and runs `npm run test:e2e`, which boots the service and executes the end-to-end test suite; this suite exercises critical behaviours including the health endpoint, security headers, validation rules, download flows, and S3/MinIO storage checks.[file:123] The Build stage depends on Test and uses Docker Buildx to build a production image from `docker/Dockerfile.prod`, tagging it with the current commit SHA and using build cache for faster subsequent runs.
+
+      Contributors are expected to mirror this CI flow locally before pushing changes or opening pull requests. The recommended local workflow is: install dependencies once with `npm install`; run static checks with `npm run lint` and `npm run format:check`; bring up the Docker-based development stack (API + MinIO + Jaeger and related services) in one terminal via `npm run docker:dev`; and, in a separate terminal, run the end-to-end tests with `npm run test:e2e`.[file:123] If all these steps succeed locally, the corresponding CI jobs should also pass, keeping the pipeline badge green and ensuring that every merged change has passed linting, formatting, automated tests, and a production Docker build.
+     
+
 ##### Example: GitHub Actions (Reference)
 
 A basic GitHub Actions workflow is already provided at `.github/workflows/ci.yml`. You may:
